@@ -7,6 +7,9 @@ import cv2
 import warnings
 class global_variables(object):
 
+    num_gpu=1
+    local_rank=0
+    iter_each_train_epoch=0
     # iter_each_test_epoch=0
     #global variables
     seed=1234

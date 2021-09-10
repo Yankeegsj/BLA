@@ -5,61 +5,6 @@ import numpy as np
 import scipy.io as io
 import torch
 
-def save_array_to_img(img_array, save_path,imgname,map_cnt,cnt_pred,save_mat=False):
-    if not os.path.exists(save_path):
-        os.makedirs(save_path)
-    # io.savemat(os.path.join(save_path,imgname+'.mat'), {'img': img_array})
-    # print(img_array.shape)
-    # assert img_array.shape[0]==1
-
-    if img_array.shape[0]==3:
-        for i in range(3):
-            img_array[i]=(img_array[i]-np.min(img_array[i]))/(np.max(img_array[i])-np.min(img_array[i]))
-
-        img_array=img_array.transpose([1,2,0])
-        plt.imsave(os.path.join(save_path,imgname+'_map_cnt{map_cnt_:.3f}_cnt_pred{cnt_pred_:.3f}.jpg'.format(
-            map_cnt_=map_cnt,
-            cnt_pred_=cnt_pred
-            )), img_array)
-        plt.close()
-        return
-    elif img_array.shape[0]==9:
-        for i in range(9):
-            img_array[i]=(img_array[i]-np.min(img_array[i]))/(np.max(img_array[i])-np.min(img_array[i]))
-        img_array=img_array.transpose([1,2,0])
-        for idx in range(3):
-            array=img_array[:,:,3*idx:3*idx+3]
-            if idx==0:
-                plt.imsave(os.path.join(save_path,imgname+'_map_cnt{map_cnt_:.3f}_cnt_pred{cnt_pred_:.3f}.jpg'.format(
-                    map_cnt_=map_cnt,
-                    cnt_pred_=cnt_pred
-                    )), array)
-                plt.close()
-            elif idx==1:
-                plt.imsave(os.path.join(save_path,imgname+'edge_x.jpg'.format(
-                    map_cnt_=map_cnt,
-                    cnt_pred_=cnt_pred
-                    )), array)
-                plt.close()
-            elif idx==2:
-                plt.imsave(os.path.join(save_path,imgname+'edge_y.jpg'.format(
-                    map_cnt_=map_cnt,
-                    cnt_pred_=cnt_pred
-                    )), array)
-                plt.close()
-    elif img_array.shape[0]==1:
-        if save_mat:
-            io.savemat(os.path.join(save_path,imgname+'.mat'), {'img': img_array[0]})
-        for idx in range(img_array.shape[0]):
-            array=img_array[idx]
-            plt.switch_backend('agg') # Using the ssh to call the plt for drawing pictures
-            plt.matshow(array, cmap='hot') # cmap=plt.get_cmap(name)
-            plt.colorbar()
-            plt.imsave(os.path.join(save_path,imgname+'_map_cnt{map_cnt_:.3f}_cnt_pred{cnt_pred_:.3f}.jpg'.format(
-                map_cnt_=map_cnt,
-                cnt_pred_=cnt_pred
-                )), array)
-            plt.close()
 
 def save_img_array(img_array, save_path,imgname,save_mat=False):
     if not os.path.exists(save_path):
@@ -90,7 +35,7 @@ def save_img_mask(img_mask, save_path):
     return
 
 def save_rec_img(img,save_filename):
-    #img  tensor 3*H*W  keypoints tensor num_keypoints*3   
+    #img  tensor 3*H*W  keypoints tensor num_keypoints*3   范围[-1,1]
     if not os.path.exists(os.path.split(save_filename)[0]):
         os.makedirs(os.path.split(save_filename)[0])
     h,w=img.size()[1],img.size()[2]
@@ -123,7 +68,7 @@ def save_img_tensor(img,save_filename,opt):
     cv2.imwrite(save_filename,new_img)
 
 def save_keypoints_img(img,den_map,opt,save_filename,img_alpha=0.6):
-    #img  tensor 3*H*W  keypoints tensor num_keypoints*3  
+    #img  tensor 3*H*W  keypoints tensor num_keypoints*3   范围[-1,1]
     if not os.path.exists(os.path.split(save_filename)[0]):
         os.makedirs(os.path.split(save_filename)[0])
     h,w=img.size()[1],img.size()[2]
@@ -153,7 +98,7 @@ def save_keypoints_img(img,den_map,opt,save_filename,img_alpha=0.6):
         pass
 
 def save_keypoints_and_img(img,den_map,opt,save_filename,img_name,img_alpha=0.6):
-    #img  tensor 3*H*W  keypoints tensor num_keypoints*3  
+    #img  tensor 3*H*W  keypoints tensor num_keypoints*3   范围[-1,1]
     if not os.path.exists(os.path.split(save_filename)[0]):
         os.makedirs(os.path.split(save_filename)[0])
 

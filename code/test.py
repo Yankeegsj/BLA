@@ -91,10 +91,6 @@ if __name__ == '__main__':
     model.next_epoch()
     results=test(0,'test', test_vision_tar, model, test_loader_tar,opt,log_output)
     log_output.info('Results in {}'.format(opt.tar_dataset))
-    state = {
-        'net': model.state_dict(),
-        }
-    torch.save(state, os.path.join(opt.log_root_path,'SHA_test.pth'))
     for k,v in results.items():
         log_output.info('{}: {}'.format(k,v))
     log_output.info(godblessdbg.end)
