@@ -1,7 +1,7 @@
 import logging
-#import godblessdbg
+
 if __name__!='__main__':
-    from . import godblessdbg#因为是放在tools里面的,
+    from . import godblessdbg
 import os
 def create_log_file_terminal(logfile_path,log_name='log_name'):#.txt
     '''
@@ -33,10 +33,7 @@ def create_log_file_terminal(logfile_path,log_name='log_name'):#.txt
     return log
 
 import shutil
-#在main中 import glob
-#create_exp_dir(output_dir, scripts_to_save=glob.glob('./code/*.py'))
-# create_exp_dir(output_dir, scripts_to_save=glob.glob('./code/*'))
-# 2020.7.9更新 不仅可以复制.py,可以直接复制code目录下所有文件,并覆盖
+
 def create_exp_dir(path, scripts_to_save=None):
     if not os.path.exists(path):
         os.makedirs(path)
@@ -57,13 +54,7 @@ def create_exp_dir(path, scripts_to_save=None):
             
 
 def save_opt(opt,log_path):
-    '''
-    todo:save the obj into the log_path/opt_save.txt
-    #这个生成时间对应的日志应该放在主程序里面的时间log,传入的log_path应该带有时间信息
-    import time
-    time_str=time.strftime('%y-%m-%d-%H-%M')
-    log_path=os.path.join(log_path,time_str)
-    '''
+
     if '.txt' in log_path:
         txt_save_path=log_path
     else:
@@ -78,27 +69,7 @@ def save_opt(opt,log_path):
             if not k.startswith('__'):
                 print(k, getattr(opt, k))
                 f.write('{0} \t {1} \n'.format(k, getattr(opt, k)))
-    #print('please comfire the options')
-        #f.write('='*40)
-        #f.write('\n')
-    '''
-    from log import Logger
-    csv_save_path=os.path.join(log_path,'opt_save.csv')
-    log_obj=Logger(csv_save_path,['attr','value'])
-    #创建logger对象 attr  val 可以考虑放在Logger.py中
-    attrs=dir(opt)
-    temp=attrs.copy()
-    for attr in attrs:
-        if '__' in attr:
-            temp.remove(attr)
-    attrs=temp
-    for attr in attrs:
-        value=eval('opt.'+attr)
-        log_obj.log({
-            'attr':attr,
-            'value':value
-            })
-     '''     
+
 
 if __name__=='__main__':
     import godblessdbg
