@@ -217,7 +217,7 @@ if __name__ == '__main__':
                  num_pool_layers=5, 
                  num_pool_operations=2,
                  num_other_operations=2, 
-                 num_search_layer=12)#长度为n的list list中每个都是list
+                 num_search_layer=12)
     encoder_input_=list(map(lambda x:arch_to_seq(x),archs))
     arch_=list(map(lambda x:seq_to_arch(x),encoder_input_))
     print(encoder_input_[0])
