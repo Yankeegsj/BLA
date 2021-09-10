@@ -6,6 +6,10 @@ Environment
 
 python3 torch 1.0.0 torchvision 0.2.1
 
+download the model from [link](http://blog.csdn.net/guodongxiaren)
+
 command:
 
-wait to do
+bash run.sh
+
+
