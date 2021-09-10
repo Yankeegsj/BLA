@@ -8,8 +8,7 @@ Created on Sun Apr  7 07:42:53 2019
 import numpy as np
 import cv2
 
-#1.图像通道组合
-#2.样本n组合
+
 
 def img_2_rgbsample(img1,img2,img3,img4,model=['rgb']):
     assert img1.shape[2]==img2.shape[2]==img3.shape[2]==img4.shape[2]==3
@@ -48,13 +47,13 @@ def img_2_rgbsample(img1,img2,img3,img4,model=['rgb']):
 
 #cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
 #cv2.cvtColor(frame,cv2.COLOR_BGR2YCrCb)
-#ycrcb3 ycrcb2 两个中的一个
+
 def img_2_ycrcbsample(img1,img2,img3,img4,model=['ycrcb3']):
     assert img1.shape[2]==img2.shape[2]==img3.shape[2]==img4.shape[2]==3
     assert img1.shape[1]==img2.shape[1]==img3.shape[1]==img4.shape[1]
     assert img1.shape[0]==img2.shape[0]==img3.shape[0]==img4.shape[0]
     
-#    y第一通道 cr第二通道 cb第三通道
+
     if 'ycrcb3' in model:
         
         ycc=cv2.cvtColor(img1,cv2.COLOR_BGR2YCrCb)
@@ -92,7 +91,7 @@ def img_2_ycrcbsample(img1,img2,img3,img4,model=['ycrcb3']):
 
 
 
-#hsv3 hsv2 两个中的一个
+
 def img_2_hsvsample(img1,img2,img3,img4,model=['hsv3']):
     assert img1.shape[2]==img2.shape[2]==img3.shape[2]==img4.shape[2]==3
     assert img1.shape[1]==img2.shape[1]==img3.shape[1]==img4.shape[1]
@@ -133,7 +132,7 @@ def img_2_hsvsample(img1,img2,img3,img4,model=['hsv3']):
             return sample
     
  
-#添加灰度侦察  
+
 def d_frame(img1,img2,img3,img4,sample,model=None):
     
     gray1=cv2.cvtColor(img1,cv2.COLOR_BGR2GRAY)
@@ -149,7 +148,7 @@ def d_frame(img1,img2,img3,img4,sample,model=None):
     
     return sample
 
-#图像求差    
+  
 def minus(gray1,gray2):
     
     d_f=np.zeros(gray1.shape,dtype=np.uint8)
