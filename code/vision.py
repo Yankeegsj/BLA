@@ -5,30 +5,6 @@ import numpy as np
 import scipy.io as io
 import torch
 
-
-def FFT(img):
-    '''
-    img: np.array(uint8)  c*h*w
-    '''
-    '''
-    img=np.random.randint(0,255,(500,600,3)).astype(np.uint8)
-    img[100:300,200:400,:]=0
-    img[300:400,300:400,:]=255
-    img1_fft = np.fft.fft2(img, axes=(0, 1))
-
-    img1_abs, img1_pha = np.abs(img1_fft), np.angle(img1_fft)
-    img1_abs = np.fft.fftshift(img1_abs, axes=(0, 1))
-    img1_abs = np.fft.ifftshift(img1_abs, axes=(0, 1))
-    img21 = img1_abs * (np.e ** (1j * img1_pha))
-    img21 = np.real(np.fft.ifft2(img21, axes=(0, 1)))
-    img21 = np.uint8(np.clip(img21, 0, 255))
-    #img21==img
-    '''
-    img1_fft = np.fft.fft2(img, axes=(1, 2))
-
-    img1_abs, img1_pha = np.abs(img1_fft), np.angle(img1_fft)
-
-    return img1_abs,img1_pha
 def save_array_to_img(img_array, save_path,imgname,map_cnt,cnt_pred,save_mat=False):
     if not os.path.exists(save_path):
         os.makedirs(save_path)
@@ -114,7 +90,7 @@ def save_img_mask(img_mask, save_path):
     return
 
 def save_rec_img(img,save_filename):
-    #img  tensor 3*H*W  keypoints tensor num_keypoints*3   范围[-1,1]
+    #img  tensor 3*H*W  keypoints tensor num_keypoints*3   
     if not os.path.exists(os.path.split(save_filename)[0]):
         os.makedirs(os.path.split(save_filename)[0])
     h,w=img.size()[1],img.size()[2]
@@ -147,7 +123,7 @@ def save_img_tensor(img,save_filename,opt):
     cv2.imwrite(save_filename,new_img)
 
 def save_keypoints_img(img,den_map,opt,save_filename,img_alpha=0.6):
-    #img  tensor 3*H*W  keypoints tensor num_keypoints*3   范围[-1,1]
+    #img  tensor 3*H*W  keypoints tensor num_keypoints*3  
     if not os.path.exists(os.path.split(save_filename)[0]):
         os.makedirs(os.path.split(save_filename)[0])
     h,w=img.size()[1],img.size()[2]
@@ -177,7 +153,7 @@ def save_keypoints_img(img,den_map,opt,save_filename,img_alpha=0.6):
         pass
 
 def save_keypoints_and_img(img,den_map,opt,save_filename,img_name,img_alpha=0.6):
-    #img  tensor 3*H*W  keypoints tensor num_keypoints*3   范围[-1,1]
+    #img  tensor 3*H*W  keypoints tensor num_keypoints*3  
     if not os.path.exists(os.path.split(save_filename)[0]):
         os.makedirs(os.path.split(save_filename)[0])
 
@@ -210,33 +186,3 @@ def save_keypoints_and_img(img,den_map,opt,save_filename,img_name,img_alpha=0.6)
         cv2.imwrite(save_filename,vision_map)
     except:
         pass
-
-def save_FFT_img(img,fft_pha,opt,save_filename):
-    #img  tensor 3*H*W  fft_pha tensor 3*H*W
-    if not os.path.exists(os.path.split(save_filename)[0]):
-        os.makedirs(os.path.split(save_filename)[0])
-    h,w=img.size()[1],img.size()[2]
-    mean=opt.mean_std[0]
-    std=opt.mean_std[1]
-
-    new_img=torch.zeros(img.size())
-    for i in range(3):
-        new_img[i]=img[i]*std[i]+mean[i]
-    new_img*=255
-    new_img=new_img.numpy()
-    new_img=new_img.astype(np.uint8)
-
-    img1_abs,img1_pha=FFT( new_img )
-
-    fft_pha=fft_pha.numpy().astype(np.float64)
-    img1_abs = np.fft.fftshift(img1_abs, axes=(1, 2))
-    img1_abs = np.fft.ifftshift(img1_abs, axes=(1, 2))
-    img_ifft = img1_abs * (np.e ** (1j * fft_pha))
-
-    img_ifft = np.real(np.fft.ifft2(img_ifft, axes=(0, 1)))
-    img_ifft = np.uint8(np.clip(img_ifft, 0, 255))
-
-    img_ifft=img_ifft.transpose([1,2,0])# h,w,c
-    img_ifft = cv2.cvtColor(img_ifft, cv2.COLOR_RGB2BGR)
-
-    cv2.imwrite(save_filename,img_ifft)
