@@ -5,9 +5,9 @@
 RTX2080Ti CUDA10.1 
 ### Software
 
-### - Install anaconda
+### 1. Install anaconda
 
-### - Install packages
+### 2. Install packages
 
 > conda create --name BLA 
 > 
@@ -41,8 +41,6 @@ RTX2080Ti CUDA10.1
 SHA MAE 99.3 download form [link](https://pan.baidu.com/s/1c8wPararIxJlhiC7aHBpvw ) password：1234
 
 ### 4. Download pre-trained model
-command:
-
 bash run.sh
 
 
