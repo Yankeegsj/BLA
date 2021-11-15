@@ -5,9 +5,9 @@
 RTX2080Ti CUDA10.1 
 ### Software
 
-### 1. Install anaconda
+### - Install anaconda
 
-### 2. Install packages
+### - Install packages
 
 > conda create --name BLA 
 > 
@@ -37,9 +37,10 @@ RTX2080Ti CUDA10.1
 > 
 > pip install cached-property==1.5.2 h5py==3.1.0  (gzy gwl gwl1 new treenewbee treenewbee2 tyl tyl2)Successfully installed cached-property-1.5.2 h5py-3.1.0
 
-### 2. Download pre-trained model
-SHA MAE 99.3 [link](https://pan.baidu.com/s/1c8wPararIxJlhiC7aHBpvw ) password：1234
+### 3. Download pre-trained model
+SHA MAE 99.3 download form [link](https://pan.baidu.com/s/1c8wPararIxJlhiC7aHBpvw ) password：1234
 
+### 4. Download pre-trained model
 command:
 
 bash run.sh
