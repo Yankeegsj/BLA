@@ -38,7 +38,7 @@ RTX2080Ti CUDA10.1
 > pip install cached-property==1.5.2 h5py==3.1.0  (gzy gwl gwl1 new treenewbee treenewbee2 tyl tyl2)Successfully installed cached-property-1.5.2 h5py-3.1.0
 
 ### 3. Download pre-trained model
-SHA MAE 99.3 download form [link](https://pan.baidu.com/s/1c8wPararIxJlhiC7aHBpvw ) password：1234
+SHA MAE 99.3 download form [link](链接：https://pan.baidu.com/s/1J0jiQnupz5-pPRtebdH2oQ) password：1234
 
 ### 4. Download pre-trained model
 bash run.sh
