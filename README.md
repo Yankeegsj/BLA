@@ -40,7 +40,7 @@ RTX2080Ti CUDA10.1
 ### 3. Download pre-trained model
 SHA MAE 99.3 download form [link](https://pan.baidu.com/s/1J0jiQnupz5-pPRtebdH2oQ) password：1234
 
-### 4. Download pre-trained model
+### 4. Test
 bash run.sh
 
 
