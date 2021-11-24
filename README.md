@@ -23,7 +23,7 @@ pip install cached-property==1.5.2 h5py==3.1.0
 
 ## 3. Dataset download
 
-download SHA Test set from [link](https://github.com/cvlab-stonybrook/LearningToCountEverything) 
+download SHA Test set from [link](https://1drv.ms/u/s!AuOdja6S-tY7gtRZLiuOi6BxkcdllA?e=T7kbty) 
 
 ## 4. File system
 ```
