@@ -21,6 +21,9 @@ pip install boxx==0.9.2.28 fn==0.4.3 pprofile==2.0.5 py-heat==0.0.6 pyopengl==3.
 pip install cached-property==1.5.2 h5py==3.1.0
 ```
 
+## 3. Model download
+
+download MAE_99.3_SHA model from [link](https://1drv.ms/u/s!AuOdja6S-tY7gtRYZEgaElVf2AMd4Q?e=8obBlj) 
 
 ## 3. File system
 ```
