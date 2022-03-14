@@ -21,11 +21,8 @@ pip install boxx==0.9.2.28 fn==0.4.3 pprofile==2.0.5 py-heat==0.0.6 pyopengl==3.
 pip install cached-property==1.5.2 h5py==3.1.0
 ```
 
-## 3. Dataset download
 
-download SHA Test set from [link](https://1drv.ms/u/s!AuOdja6S-tY7gtRZLiuOi6BxkcdllA?e=T7kbty) 
-
-## 4. File system
+## 3. File system
 ```
 - BLA
   - code
@@ -35,5 +32,5 @@ download SHA Test set from [link](https://1drv.ms/u/s!AuOdja6S-tY7gtRZLiuOi6Bxkc
     - SHA
 ``` 
 
-## 5. run the code
+## 4. run the code
 bash run.sh
