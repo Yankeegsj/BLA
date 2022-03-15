@@ -1,4 +1,4 @@
-# Bi-Level Alignment (BLA)
+# Bi-Level Alignment (BLA) （CVPR 2022）
 
 ## 1. Install anaconda
 
